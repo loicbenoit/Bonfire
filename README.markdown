@@ -1,3 +1,5 @@
+Note: This is an archive of Bonfire 0.7.1 using code to support HMVC which is different from the Wiredesignz code used in the released version of 0.7.1 (and previous versions of Bonfire). This branch primarily exists to archive this version for those users who implemented sites with this code and may need to be able to retrieve the code and/or compare it to the current branch(es). For the release version of 0.7.1, see the master branch or the releases page: https://github.com/ci-bonfire/Bonfire/releases
+
 # Faster Development of CodeIgniter 2.1.4 Apps
 
 <div style="float: right; margin: 0 20px 20px 0">
