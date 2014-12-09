@@ -70,7 +70,7 @@ class Developer extends Admin_Controller
 	{
 		if (empty($transLang)) {
 			$config =& get_config();
-			$transLang = ( ! isset($config['language'])) ? 'english' : $config['language'];
+			$transLang = ( ! isset($config['language'])) ? FALLBACK_LANGUAGE : $config['language'];
 		}
 		// Selecting a different language?
 		if (isset($_POST['select_lang'])) {
@@ -106,7 +106,7 @@ class Developer extends Admin_Controller
 	public function edit($transLang = '', $langFile = '')
 	{
 		$config =& get_config();
-		$origLang = isset($config['language']) ? $config['language'] : 'english';
+		$origLang = isset($config['language']) ? $config['language'] : FALLBACK_LANGUAGE;
         $chkd = array();
 
 		if ($langFile) {
