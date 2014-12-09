@@ -48,10 +48,10 @@ $config['modulebuilder']['form_error_delimiters'] = array(
 );
 
 $config['modulebuilder']['languages_available'] = array(
-    'english',
-    'portuguese_br',
-    'spanish_am',
-	'italian',
+    'en',
+    'pt_br',
+    'latam',
+    'it',
 );
 
 // Values below are MySQL database types
