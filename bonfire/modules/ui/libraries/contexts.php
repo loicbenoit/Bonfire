@@ -425,7 +425,7 @@ class Contexts
             self::$ci->load->helper('translate/languages');
         }
 
-        $temp = addLanguageLine('application_lang.php', array("bf_context_{$lowerName}" => $name), 'english');
+        $temp = addLanguageLine('application_lang.php', array("bf_context_{$lowerName}" => $name), FALLBACK_LANGUAGE);
         if (! $temp) {
             // @todo set error/return if the language line was not added successfully?
         }
