@@ -32,7 +32,7 @@ class BF_Lang extends MX_Lang
      * If you change this, you should ensure that all language files have been
      * translated to the language indicated by the new value.
      */
-    protected $fallback = 'english';
+    protected $fallback = FALLBACK_LANGUAGE;
 
 	public function __construct()
 	{
