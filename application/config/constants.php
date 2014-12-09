@@ -71,5 +71,10 @@ $ajax_request = (! empty($_SERVER['HTTP_X_REQUESTED_WITH'])
 define('IS_AJAX', $ajax_request);
 unset($ajax_request);
 
+// -----------------------------------------------------------------------------
+// The global default fallback language to use when failing to obtain the language.
+// -----------------------------------------------------------------------------
+define('FALLBACK_LANGUAGE', 'en');
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
