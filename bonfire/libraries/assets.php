@@ -322,7 +322,7 @@ class Assets
         $attr = array(
             'rel'   => 'stylesheet',
             'type'  => 'text/css',
-            'href'  => self::path(base_url(), self::$directories['base'], self::$directories['cache'], "{$fileName}{$min}.css"),
+            'href'  => self::path(base_url(NULL, FALSE), self::$directories['base'], self::$directories['cache'], "{$fileName}{$min}.css"),
             'media' => $media,
         );
 
@@ -608,7 +608,7 @@ class Assets
                     || strpos($script, 'http:') !== false           // Finally, check 'http' in case $http_protocol is 'https'
                 ) {
                     $attr['src'] = $script;
-                } elseif (strpos($script, base_url()) === 0) {
+                } elseif (strpos($script, base_url(NULL, FALSE)) === 0) {
                     // Otherwise, build the full url
                     $attr['src'] = self::path(site_url(), $script);
                 } else {
@@ -746,7 +746,7 @@ class Assets
         // If the file is generated successfully, output the path to the file
         $output = '';
         if (self::generate_file($files, $fileName, 'js')) {
-            $output = self::path(base_url(), self::$directories['base'], self::$directories['cache'], "{$fileName}{$min}.js");
+            $output = self::path(base_url(NULL, FALSE), self::$directories['base'], self::$directories['cache'], "{$fileName}{$min}.js");
         }
 
         return $output;
@@ -810,10 +810,10 @@ class Assets
         if ($type !== null && $type !== 'base'
             && array_key_exists($type, self::$directories)
            ) {
-            $url = self::path(base_url(), self::$directories['base'], self::$directories[$type]) . '/';
+            $url = self::path(base_url(NULL, FALSE), self::$directories['base'], self::$directories[$type]) . '/';
         } else {
             // Get Assets Base Folder
-            $url = self::path(base_url(), self::$directories['base']) . '/';
+            $url = self::path(base_url(NULL, FALSE), self::$directories['base']) . '/';
         }
 
         if ($modulePath && ! in_array($type, array('base', 'cache', 'image', 'module'))) {
@@ -995,7 +995,7 @@ class Assets
         }
 
         foreach ($files as $key => $file) {
-            $app_file = is_array($file) ? $file['server_path'] : self::path($site_path, str_replace(base_url(), '', $file));
+            $app_file = is_array($file) ? $file['server_path'] : self::path($site_path, str_replace(base_url(NULL, FALSE), '', $file));
 
             // Javascript
             if ($fileType == 'js') {
@@ -1279,11 +1279,11 @@ class Assets
             return false;
         }
 
-        $filePath = self::path(base_url(), $fileName . $type);
+        $filePath = self::path(base_url(NULL, FALSE), $fileName . $type);
 
         if (lang('bf_language_direction') == self::$rtl_postfix) {
             if (is_file(self::path($sitePath, "{$fileName}-" . self::$rtl_postfix . $type))) {
-                $filePath = self::path(base_url(), "{$fileName}-" . self::$rtl_postfix . $type);
+                $filePath = self::path(base_url(NULL, FALSE), "{$fileName}-" . self::$rtl_postfix . $type);
                 $serverPath = self::path($sitePath, "{$fileName}-" . self::$rtl_postfix . $type);
             }
         }
