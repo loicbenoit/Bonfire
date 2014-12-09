@@ -23,7 +23,7 @@ class Migration_User_language extends Migration
 		'language' => array(
 			'type'			=> 'varchar',
 			'constraint'	=> 20,
-			'default'		=> 'english',
+			'default'		=> 'en',
 			'null'			=> false,
 		),
 	);
