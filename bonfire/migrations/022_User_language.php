@@ -42,9 +42,9 @@ class Migration_User_language extends Migration
 	 * 				serialized and inserted into the settings field
 	 */
 	private $languages = array(
-		'english',
-		'portuguese',
-		'persian',
+		'en',
+		'pt',
+		'fa',
 	);
 
 	/****************************************************************
