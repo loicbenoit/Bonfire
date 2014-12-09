@@ -33,7 +33,7 @@ if ( ! function_exists('addLanguageLine')) {
      *
      * @return bool    true on successful update, else false
      */
-    function addLanguageLine($filename, $line, $language = 'english')
+    function addLanguageLine($filename, $line, $language = FALLBACK_LANGUAGE)
     {
         $orig = load_lang_file($filename, $language);
         foreach ($line as $key => $val) {
@@ -75,7 +75,7 @@ if ( ! function_exists('list_lang_files')) {
 	 *
 	 * @return array An array of files.
 	 */
-	function list_lang_files($language = 'english')
+	function list_lang_files($language = FALLBACK_LANGUAGE)
 	{
 		$ci =& get_instance();
 
@@ -149,14 +149,14 @@ if ( ! function_exists('load_lang_file')) {
 	 *
 	 * @return mixed An array on loading the language file, false on error
 	 */
-	function load_lang_file($filename = null, $language = 'english')
+	function load_lang_file($filename = null, $language = FALLBACK_LANGUAGE)
 	{
 		if (empty($filename)) {
 			return null;
 		}
 
 		// Is it a application lang file? Use the English folder to determine.
-        $arFiles = scandir(APPPATH . "language/english/");
+        $arFiles = scandir(APPPATH . "language/".FALLBACK_LANGUAGE."/");
 		if ($filename == 'application_lang.php' || in_array($filename, $arFiles)) {
 			$path = APPPATH . "language/{$language}/{$filename}";
 		}
@@ -191,22 +191,22 @@ if ( ! function_exists('save_lang_file')) {
 	 *
 	 * @return mixed A string when the $return setting is true
 	 */
-	function save_lang_file($filename = null, $language = 'english', $settings = null, $return = false, $allowNewValues = false)
+	function save_lang_file($filename = null, $language = 'en', $settings = null, $return = false, $allowNewValues = false)
 	{
 		if (empty($filename) || ! is_array($settings)) {
 			return false;
 		}
 
 		// Is it a application lang file? Use the English folder to determine.
-        $arFiles = scandir(APPPATH . "language/english/");
+        $arFiles = scandir(APPPATH . "language/".FALLBACK_LANGUAGE."/");
 		if ($filename == 'application_lang.php' || in_array($filename, $arFiles)) {
-			$orig_path = APPPATH . "language/english/{$filename}";
+			$orig_path = APPPATH . "language/".FALLBACK_LANGUAGE."/{$filename}";
 			$path = APPPATH . "language/{$language}/{$filename}";
 		}
 		// Look in core modules
 		else {
 			$module    = str_replace('_lang.php', '', $filename);
-			$orig_path = Modules::file_path($module, 'language', "english/{$filename}");
+			$orig_path = Modules::file_path($module, 'language', FALLBACK_LANGUAGE."/{$filename}");
 			$path      = Modules::file_path($module, 'language', "{$language}/{$filename}");
 
 			// If it's still empty, grab the module path
